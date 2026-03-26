@@ -76,7 +76,6 @@
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-            
             <xs:element name="ram">
                 <xs:complexType>
                     <xs:simpleContent>
@@ -97,10 +96,8 @@
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-            
             <!-- GPU es opcional (minOccurs=0) -->
-            <xs:element name="gpu" minOccurs="0"
-                        maxOccurs="1">
+            <xs:element name="gpu" minOccurs="0">
                 <xs:complexType>
                     <xs:simpleContent>
                         <xs:extension base="xs:string">
@@ -114,7 +111,6 @@
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-            
             <xs:element name="discos">
                 <xs:complexType>
                     <xs:sequence>
@@ -144,14 +140,12 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            
         </xs:sequence>
     </xs:group>
 
     <!-- ========================================== -->
     <!-- ESTRUCTURA DEL DOCUMENTO (ELEMENTOS)       -->
     <!-- ========================================== -->
-    
     
     <xs:element name="catalogo_cloud">
         <xs:complexType>
@@ -162,7 +156,6 @@
                             <xs:element name="servidor" maxOccurs="unbounded">
                                 <xs:complexType>
                                     <xs:sequence>
-
                                         <!-- Hardware -->
                                         <xs:element name="hardware">
                                             <xs:complexType>
@@ -171,7 +164,6 @@
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
-
                                         <!-- Software -->
                                         <xs:element name="software">
                                             <xs:complexType>
@@ -179,7 +171,13 @@
                                                     <xs:element name="red">
                                                         <xs:complexType>
                                                             <xs:choice>
-                                                                <xs:element name="ip_fija" type="xs:string"></xs:element>
+                                                                <xs:element name="ip_fija">
+                                                                    <xs:simpleType>
+                                                                        <xs:restriction base="xs:string">
+                                                                            <xs:pattern value="((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"></xs:pattern>
+                                                                        </xs:restriction>
+                                                                    </xs:simpleType>
+                                                                </xs:element>
                                                                 <xs:element name="dhcp">
                                                                     <xs:simpleType>
                                                                         <xs:restriction base="xs:string">
@@ -228,33 +226,28 @@
                                         <xs:element name="auditoria">
                                             <xs:complexType>
                                                 <xs:all>
-                                                    <xs:element name="fecha_revision"></xs:element>
-                                                    <xs:element name="tecnico"></xs:element>
-                                                    <xs:element name="nota"></xs:element>
+                                                    <xs:element name="fecha_revision" type="xs:date"></xs:element>
+                                                    <xs:element name="tecnico" type="xs:string"></xs:element>
+                                                    <xs:element name="nota" type="xs:string"></xs:element>
                                                 </xs:all>
                                             </xs:complexType>
                                         </xs:element>
                                     </xs:sequence>
-                                    
-                                <xs:attributeGroup ref="AtributosServidor"></xs:attributeGroup>    
-                                    
+                                    <xs:attributeGroup ref="AtributosServidor"></xs:attributeGroup>       
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
-
                         <!-- Atributos del Centro de Datos -->
                         <xs:attribute name="ubicacion" type="xs:string" use="required" />
                         <xs:attribute name="zona" type="TipoZona" use="required" />
-
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
             <xs:attribute name="empresa" type="xs:string" use="required" />
         </xs:complexType>
         <xs:unique name="UnicoID">
-            <xs:selector xpath="servidor"></xs:selector>
+            <xs:selector xpath=".//servidor"></xs:selector>
             <xs:field xpath="@id"></xs:field>
         </xs:unique>    
     </xs:element>
-
 </xs:schema>
