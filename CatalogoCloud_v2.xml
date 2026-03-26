@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="CatalogoCloud.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<?xml-model href="CatalogoCloud_v2.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <!-- 
   ========================================================
   Módulo: LMSGI - CFGS DAM/DAW
@@ -33,13 +33,13 @@
                 </servicios>
             </software>
             <auditoria>
-                <fecha_revision></fecha_revision>
+                <fecha_revision>2025-02-02</fecha_revision>
                 <tecnico></tecnico>
                 <nota></nota>
             </auditoria>
         </servidor>
 
-        <servidor id="srv-db-01" rack="A2" estado="mantenimiento">
+        <servidor id="srv-web-02" rack="A2" estado="mantenimiento">
             <hardware>
                 <cpu nucleos="64" arquitectura="ARM">Ampere Altra</cpu>
                 <ram unidad="GB">256</ram>
@@ -57,7 +57,7 @@
                 </servicios>
             </software>
             <auditoria>
-                <fecha_revision></fecha_revision>
+                <fecha_revision>2026-01-26</fecha_revision>
                 <tecnico></tecnico>
                 <nota></nota>
             </auditoria>
@@ -90,7 +90,7 @@
                 </servicios>
             </software>
             <auditoria>
-                <fecha_revision></fecha_revision>
+                <fecha_revision>2025-03-03</fecha_revision>
                 <tecnico></tecnico>
                 <nota></nota>
             </auditoria>
@@ -116,7 +116,7 @@
                 </servicios>
             </software>
             <auditoria>
-                <fecha_revision></fecha_revision>
+                <fecha_revision>2025-04-04</fecha_revision>
                 <tecnico></tecnico>
                 <nota></nota>
             </auditoria>
